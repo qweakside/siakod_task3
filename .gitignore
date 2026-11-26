@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+build/
+dist/
+
+# Виртуальные окружения
+.venv/
+venv/
+env/
+
+# PyCharm
+.idea/
+
+# Тесты и покрытие
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ОС
+Thumbs.db
+desktop.ini
+.DS_Store
