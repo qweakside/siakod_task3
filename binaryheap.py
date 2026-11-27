@@ -2,7 +2,20 @@ class BinaryHeap:
     def __init__(self,heap_name):
         self.heap = []
         self.heap_name = heap_name
-    def heap_size(self):
+    def replace_top(self,value):
+        if len(self.heap) == 0:
+            return None
+        else:
+            peek = self.heap[0]
+            self.heap[0]=value
+            self._sift_down(0)
+            return peek
+    def heapify(self,items):
+        self.heap=list(items)
+        n = len(self.heap)
+        for i in reversed(range(n // 2)):
+            self._sift_down(i)
+    def size(self):
         return len(self.heap)
     def peek(self):
         if len(self.heap) == 0:
@@ -31,7 +44,7 @@ class BinaryHeap:
             best = child1
             if child2 < len(self.heap) and self.compare(self.heap[child1],self.heap[child2]):
                 best =child1
-            elif child2 < len(self.heap) and self.compare(self.heap[best],self.heap[child2]):
+            elif child2 < len(self.heap) and self.compare(self.heap[child2],self.heap[best]):
                 best = child2
             if self.compare(self.heap[best],self.heap[i]):
                 self.heap[i],self.heap[best]=self.heap[best],self.heap[i]
@@ -52,10 +65,6 @@ class BinaryHeap:
     def __str__(self):
         return str(self.heap)
 if __name__ == "__main__":
-    heap = BinaryHeap("Max")
-    for x in  [10,2,55,3245,5]:
-        heap.push(x)
-        pass
-    print(heap)
-    heap.pop()
+    heap = BinaryHeap('Max')
+    heap.heapify([3, 1, 6, 5, 2, 4])
     print(heap)
